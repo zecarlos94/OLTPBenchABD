@@ -1,0 +1,23 @@
+%Test 1
+Default Values
+work_mem = 4MB
+shared_buffers = 128MB
+effective_cache_size = 4GB
+
+%Test 2
+Default Values
+work_mem = 64kB
+shared_buffers = 128MB
+effective_cache_size = 4GB
+
+%Test 3
+Default Values
+work_mem = 8MB
+shared_buffers = 128MB
+effective_cache_size = 4GB
+
+%Test 4
+Default Values
+work_mem = 4MB
+shared_buffers = 512MB
+effective_cache_size = 4GB

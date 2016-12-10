@@ -1,0 +1,22 @@
+Isolation -> In java jdbc connection choose one of the following:
+read-uncommitted -> Dirty reads, non-repeatable reads, and phantom reads can occur.
+read-committed -> Dirty reads are prevented; non-repeatable reads and phantom reads can occur.
+repeatable-read -> Dirty reads and non-repeatable reads are prevented; phantom reads can occur.
+serializable -> Dirty reads, non-repeatable reads and phantom reads are prevented.
+Example:
+Connection c = DriverManager.getConnection("jdbc:odbc:MyDataSource","admin","");
+c.setAutoCommit(false);
+c.setTransactionIsolationLevel(Connection.TRANSACTION_SERIALIZABLE);
+c.commit(); or c.rollback(); Depending on how successful the query was.
+
+----------------------------------------------------------------------------------------------------
+
+Atomicity and Durability -> Logs Redo,Undo,Redo-Undo; Checkpoints
+wal level -> enables logs(hot_standby)
+fsync -> Doesn't wait for pages to be written
+synchronous commits -> informs that is finnished when in reality it hasn't
+full pages writes -> If it is off may lead to db corruption
+wal writer delay -> Empty all acumulated writtings in buffer
+
+More information in
+https://www.postgresql.org/docs/9.1/static/runtime-config-wal.html
