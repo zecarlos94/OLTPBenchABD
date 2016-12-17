@@ -33,9 +33,12 @@ do
       wait $!
 
       printf "${BLUE_COLOR}[ BENCHMARK ]${DEFAULT_COLOR} Running\n"
+
       # Run benchmark
-      # ....
-      printf "${BLUE_COLOR}[ BENCHMARK ]${DEFAULT_COLOR} Done\n"
+      ./oltpbenchmark -b epinions -c config/abd.xml -- create=true --load=true --execute=true -s 5 -o ~/Desktop/$folder/$file
+
+      printf "${BLUE_COLOR}[ BENCHMARK ]${DEFAULT_COLOR} Done | Output File: "
+      printf "${GREEN_COLOR}~/Desktop/$folder/$file ${DEFAULT_COLOR}\n"
 
       # Sleep for 5 seconds to no influence next results.
       sleep 5
