@@ -1,0 +1,5 @@
+The folder done contains all benchmarks+pgbadger done so far.
+The folder TODO-Next contains the Replication test that will be run in a different way.
+The folder config_files is ready to run th run_benchmarks.sh that will produce separate folders with the proper results in it.
+The last is tunned only for postgres version 9.5.1
+
