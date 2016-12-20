@@ -29,7 +29,23 @@ do
 
   # Run benchmark
   cd Benchmark-Andre/
-  ./oltpbenchmark -b epinions -c config/dba.xml --create=true --load=true --execute=true -s 5 -o ../$file/$file
+  ./oltpbenchmark -b epinions -c config/dba.xml --create=true --load=true -s 5 -o ../$file/$file
+  cd ..
+  sleep 10
+
+  # Delete Creation and Load Logs
+  rm Databases/DBA/pg_log/*.log
+
+  # Replace configuration file.
+  cp config_files/$file Databases/DBA/postgresql.conf
+
+  # Reload configuration files.
+  pg_ctl -D Databases/DBA reload
+  wait $!
+
+  # Run benchmark
+  cd Benchmark-Andre/
+  ./oltpbenchmark -b epinions -c config/dba.xml --execute=true -s 5 -o ../$file/$file
   cd ..
   sleep 10
 
