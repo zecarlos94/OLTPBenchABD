@@ -27,9 +27,17 @@ do
   # Create folder for current iteration
   mkdir $file
 
+  # Create and Load DB
+  cd Benchmark
+  ./oltpbenchmark -b epinions -c config/abd.xml --create=true --load=true -s 5 -o ../$file/$file
+  cd ..
+
+  # Delete all logs refering to creation and loading queries
+  rm Databases/abd/pg_log/*.log
+
   # Run benchmark
   cd Benchmark
-  ./oltpbenchmark -b epinions -c config/abd.xml --create=true --load=true --execute=true -s 5 -o ../$file/$file
+  ./oltpbenchmark -b epinions -c config/abd.xml --execute=true -s 5 -o ../$file/$file
   cd ..
   sleep 10
 
