@@ -1,0 +1,5 @@
+Step 1: Verification of SQL statements in order to detect possible joins between tables that could be replaced with a materialized view.
+
+Step 2: Check select statements in order to create indexes that may improve the time spent on each query.
+
+Step 3: Create clusters with those indexes in order to improve the performance.
