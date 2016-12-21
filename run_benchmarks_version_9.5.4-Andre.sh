@@ -27,6 +27,11 @@ do
   # Create folder for current iteration
   mkdir $file
 
+  # Drop Materialized Views, Indexes and Clusters from remove_queries.sql script
+  cd Databases/
+  psql -h localhost -f remove_queries.sql
+  cd ..
+  
   # Run benchmark
   cd Benchmark-Andre/
   ./oltpbenchmark -b epinions -c config/dba.xml --create=true --load=true -s 5 -o ../$file/$file
