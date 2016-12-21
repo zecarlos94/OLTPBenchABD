@@ -33,11 +33,6 @@ do
   cd ..
   sleep 10
 
-  # Create Materialized Views, Indexes and Clusters from new_queries.sql script
-  cd Databases/
-  psql -h localhost -f new_queries.sql
-  cd ..
-
   # Delete Creation and Load Logs
   rm Databases/DBA/pg_log/*.log
 

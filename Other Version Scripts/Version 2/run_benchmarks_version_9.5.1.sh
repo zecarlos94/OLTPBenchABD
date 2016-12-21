@@ -32,11 +32,6 @@ do
   ./oltpbenchmark -b epinions -c config/abd.xml --create=true --load=true -s 5 -o ../$file/$file
   cd ..
 
-  # Create Materialized Views, Indexes and Clusters from new_queries.sql script
-  cd Databases/
-  psql -h localhost -f new_queries.sql
-  cd ..
-
   # Delete all logs refering to creation and loading queries
   rm Databases/abd/pg_log/*.log
 
