@@ -28,9 +28,9 @@ do
   mkdir $file
 
   # Drop Materialized Views, Indexes and Clusters from remove_queries.sql script
-  cd Databases/
-  psql -h localhost -f remove_queries.sql
-  cd ..
+  # cd Databases/
+  # psql -h localhost -f remove_queries.sql
+  # cd ..
 
   # Create and Load DB
   cd Benchmark
@@ -38,9 +38,9 @@ do
   cd ..
 
   # Create Materialized Views, Indexes and Clusters from new_queries.sql script
-  cd Databases/
-  psql -h localhost -f new_queries.sql
-  cd ..
+  # cd Databases/
+  # psql -h localhost -f new_queries.sql
+  # cd ..
 
   # Delete all logs refering to creation and loading queries
   rm Databases/abd/pg_log/*.log

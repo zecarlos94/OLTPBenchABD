@@ -28,9 +28,9 @@ do
   mkdir $file
   
   # Drop Materialized Views, Indexes and Clusters from remove_queries.sql script
-  cd Databases/
-  psql -h localhost -f remove_queries.sql
-  cd ..
+  # cd Databases/
+  # psql -h localhost -f remove_queries.sql
+  # cd ..
 
   # Run benchmark
   cd Benchmark-Bruno/
@@ -39,9 +39,9 @@ do
   sleep 10
 
   # Create Materialized Views, Indexes and Clusters from new_queries.sql script
-  cd Databases/
-  psql -h localhost -f new_queries.sql
-  cd ..
+  # cd Databases/
+  # psql -h localhost -f new_queries.sql
+  # cd ..
 
   # Delete Creation and Load Logs
   rm Databases/DB_BA/pg_log/*.log
