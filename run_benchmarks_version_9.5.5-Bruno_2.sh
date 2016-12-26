@@ -27,10 +27,10 @@ do
   # Create folder for current iteration
   mkdir $file
 
-  # Drop Materialized Views, Indexes and Clusters from remove_queries.sql script
-  #cd Databases/
-  #psql -h localhost -f remove_queriesBA.sql
-  #cd ..
+  Drop Materialized Views, Indexes and Clusters from remove_queries.sql script
+  cd Databases/
+  psql -h localhost -f remove_queriesBA.sql
+  cd ..
 
   # Run benchmark
   cd Benchmark-Bruno/
@@ -38,20 +38,20 @@ do
   cd ..
 
   # Create Materialized Views, Indexes and Clusters from new_queries.sql script
-  #cd Databases/
-  #psql -h localhost -f new_queriesBA.sql
-  #psql -h localhost -f triggers_refreshBA.sql
-  #cd ..
+  cd Databases/
+  psql -h localhost -f new_queriesBA.sql
+#  psql -h localhost -f triggers_refreshBA.sql
+  cd ..
 
   # Delete Creation and Load Logs
   rm Databases/DB_BA/pg_log/*.log
 
   # Replace configuration file.
-  #cp config_files/$file Databases/DB_BA/postgresql.conf
+  cp config_files/$file Databases/DB_BA/postgresql.conf
 
   # Reload configuration files.
-  #pg_ctl -D Databases/DB_BA reload
-  #wait $!
+  pg_ctl -D Databases/DB_BA reload
+  wait $!
 
   # Run benchmark
   cd Benchmark-Bruno/
