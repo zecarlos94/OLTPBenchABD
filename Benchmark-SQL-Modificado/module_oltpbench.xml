@@ -17,6 +17,11 @@
   
   <path id="oltpbench.module.production.classpath">
     <path refid="${module.jdk.classpath.oltpbench}"/>
+    <pathelement location="${basedir}/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar"/>
+    <pathelement location="${basedir}/postgresql-9.4.1212.jre6.jar"/>
+    <pathelement location="${basedir}/httpclient-4.3-beta1.jar"/>
+    <pathelement location="${basedir}/httpmime-4.3.jar"/>
+    <pathelement location="${basedir}/httpcore-4.4.5.jar"/>
     <path refid="library.maven:_org.hsqldb:hsqldb-j5:2.0.0.classpath"/>
     <path refid="library.maven:_javax.persistence:persistence-api:1.0.classpath"/>
     <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
@@ -74,10 +79,19 @@
     <path refid="library.maven:_commons-jxpath:commons-jxpath:1.3.classpath"/>
     <path refid="library.maven:_commons-io:commons-io:2.2.classpath"/>
     <path refid="library.maven:_com.oracle:ojdbc14:10.2.0.1.0.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.2.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901-1.jdbc4.classpath"/>
   </path>
   
   <path id="oltpbench.runtime.production.module.classpath">
     <pathelement location="${oltpbench.output.dir}"/>
+    <pathelement location="${basedir}/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar"/>
+    <pathelement location="${basedir}/postgresql-9.4.1212.jre6.jar"/>
+    <pathelement location="${basedir}/httpclient-4.3-beta1.jar"/>
+    <pathelement location="${basedir}/httpmime-4.3.jar"/>
+    <pathelement location="${basedir}/httpcore-4.4.5.jar"/>
     <path refid="library.maven:_org.hsqldb:hsqldb-j5:2.0.0.classpath"/>
     <path refid="library.maven:_javax.persistence:persistence-api:1.0.classpath"/>
     <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
@@ -135,11 +149,20 @@
     <path refid="library.maven:_commons-jxpath:commons-jxpath:1.3.classpath"/>
     <path refid="library.maven:_commons-io:commons-io:2.2.classpath"/>
     <path refid="library.maven:_com.oracle:ojdbc14:10.2.0.1.0.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.2.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901-1.jdbc4.classpath"/>
   </path>
   
   <path id="oltpbench.module.classpath">
     <path refid="${module.jdk.classpath.oltpbench}"/>
     <pathelement location="${oltpbench.output.dir}"/>
+    <pathelement location="${basedir}/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar"/>
+    <pathelement location="${basedir}/postgresql-9.4.1212.jre6.jar"/>
+    <pathelement location="${basedir}/httpclient-4.3-beta1.jar"/>
+    <pathelement location="${basedir}/httpmime-4.3.jar"/>
+    <pathelement location="${basedir}/httpcore-4.4.5.jar"/>
     <path refid="library.maven:_org.hsqldb:hsqldb-j5:2.0.0.classpath"/>
     <path refid="library.maven:_javax.persistence:persistence-api:1.0.classpath"/>
     <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
@@ -197,11 +220,20 @@
     <path refid="library.maven:_commons-jxpath:commons-jxpath:1.3.classpath"/>
     <path refid="library.maven:_commons-io:commons-io:2.2.classpath"/>
     <path refid="library.maven:_com.oracle:ojdbc14:10.2.0.1.0.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.2.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901-1.jdbc4.classpath"/>
   </path>
   
   <path id="oltpbench.runtime.module.classpath">
     <pathelement location="${oltpbench.testoutput.dir}"/>
     <pathelement location="${oltpbench.output.dir}"/>
+    <pathelement location="${basedir}/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar"/>
+    <pathelement location="${basedir}/postgresql-9.4.1212.jre6.jar"/>
+    <pathelement location="${basedir}/httpclient-4.3-beta1.jar"/>
+    <pathelement location="${basedir}/httpmime-4.3.jar"/>
+    <pathelement location="${basedir}/httpcore-4.4.5.jar"/>
     <path refid="library.maven:_org.hsqldb:hsqldb-j5:2.0.0.classpath"/>
     <path refid="library.maven:_javax.persistence:persistence-api:1.0.classpath"/>
     <path refid="library.maven:_log4j:log4j:1.2.17.classpath"/>
@@ -259,6 +291,10 @@
     <path refid="library.maven:_commons-jxpath:commons-jxpath:1.3.classpath"/>
     <path refid="library.maven:_commons-io:commons-io:2.2.classpath"/>
     <path refid="library.maven:_com.oracle:ojdbc14:10.2.0.1.0.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.0.1.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.0.2.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.3.classpath"/>
+    <path refid="library.maven:_postgresql:postgresql:9.1-901-1.jdbc4.classpath"/>
   </path>
   
   
