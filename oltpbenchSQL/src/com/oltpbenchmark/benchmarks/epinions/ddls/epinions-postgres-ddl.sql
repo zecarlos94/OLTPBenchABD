@@ -46,30 +46,3 @@ CREATE TABLE "trust" (
   trust int NOT NULL,
   creation_date timestamp DEFAULT NULL
 );
-
-
-drop materialized view if exists GetReviewsByUser;
-create materialized view GetReviewsByUser as
-        select r.u_id,r.a_id,r.i_id,r.rating,u.name from review as r
-                inner join "user" as u
-                on u.u_id=r.u_id
-        order by(r.rating)
-        limit 10;
-
-drop index if exists IDX_MVIEW_GRBU;
-CREATE INDEX IDX_MVIEW_GRBU ON GetReviewsByUser (u_id);
-
-CREATE OR REPLACE FUNCTION trig_refresh_GetReviewsByUser() RETURNS trigger AS
-$$
-BEGIN
-    REFRESH MATERIALIZED VIEW GetReviewsByUser;
-    RETURN NULL;
-END;
-$$
-LANGUAGE plpgsql ;
-
-DROP TRIGGER if exists trig_01_refresh_GetReviewsByUser ON review;
-CREATE TRIGGER trig_01_refresh_GetReviewsByUser AFTER TRUNCATE OR INSERT OR UPDATE OR DELETE
-   ON review FOR EACH STATEMENT
-   EXECUTE PROCEDURE trig_refresh_GetReviewsByUser();
-
