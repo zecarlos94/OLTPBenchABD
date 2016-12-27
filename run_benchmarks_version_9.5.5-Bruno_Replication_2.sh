@@ -1,0 +1,82 @@
+#!/bin/bash
+
+CONFIG_FILES=$(ls config_files)
+DEFAULT_COLOR='\033[0m'
+GREEN_COLOR='\033[0;32m'
+RED_COLOR='\033[0;31m'
+
+# Backup current postgresql.conf file.
+cp Postgres_Replication_2_DataBases/r1/dados/postgresql.conf Postgres_Replication_2_DataBases/r1/dados/postgresql.conf.backup
+
+# Start server with the current configuration.
+pg_ctl -D Postgres_Replication_2_DataBases/r1/dados start
+sleep 1
+
+# Start standby server.
+pg_ctl -D Postgres_Replication_2_DataBases/r2/dados start
+sleep 1
+
+
+for file in $CONFIG_FILES
+do
+  printf "${GREEN_COLOR}[ CONFIG ]${DEFAULT_COLOR} Copying "
+  printf "${RED_COLOR}config_files/$file ${DEFAULT_COLOR}\n"
+
+  # Replace configuration file.
+  cp config_files/$file Postgres_Replication_2_DataBases/r1/dados/postgresql.conf
+
+  # Reload configuration files.
+  pg_ctl -D Postgres_Replication_2_DataBases/r1/dados reload
+  wait $!
+
+  # Create folder for current iteration
+  mkdir $file
+  
+  # Drop Materialized Views, Indexes and Clusters from remove_queries.sql script
+  # cd Databases/
+  # psql -h localhost -f remove_queries.sql
+  # cd ..
+
+  # Run benchmark
+  cd Benchmark-Bruno/
+  ./oltpbenchmark -b epinions -c config/dba.xml --create=true --load=true -s 5 -o ../$file/$file
+  cd ..
+  sleep 10
+
+  # Create Materialized Views, Indexes and Clusters from new_queries.sql script
+  # cd Databases/
+  # psql -h localhost -f new_queries.sql
+  # cd ..
+
+  # Delete Creation and Load Logs
+  rm Postgres_Replication_2_DataBases/r1/dados/pg_log/*.log
+
+  # Replace configuration file.
+  cp config_files/$file Postgres_Replication_2_DataBases/r1/dados/postgresql.conf
+
+  # Reload configuration files.
+  pg_ctl -D Postgres_Replication_2_DataBases/r1/dados reload
+  wait $!
+
+  # Run benchmark
+  cd Benchmark-Bruno/
+  ./oltpbenchmark -b epinions -c config/dba.xml --execute=true -s 5 -o ../$file/$file
+  cd ..
+  sleep 10
+
+  # Run pgbadger
+  pgbadger Postgres_Replication_2_DataBases/r1/dados/pg_log/postgresql.log -o $file.html -O $file/
+  rm Postgres_Replication_2_DataBases/r1/dados/pg_log/*.log
+
+done
+
+# Shut down master server.
+pg_ctl -D Postgres_Replication_2_DataBases/r1/dados stop
+
+# Shut down standby server.
+pg_ctl -D Postgres_Replication_2_DataBases/r2/dados stop
+
+
+# Put backup file back in place and remove the backup.
+cp Postgres_Replication_2_DataBases/r1/dados/postgresql.conf.backup Postgres_Replication_2_DataBases/r1/dados/postgresql.conf
+rm Postgres_Replication_2_DataBases/r1/dados/postgresql.conf.backup
