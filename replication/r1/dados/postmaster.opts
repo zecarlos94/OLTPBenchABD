@@ -1,0 +1,1 @@
+/usr/local/Cellar/postgresql95/9.5.5/bin/postgres "-D" "replication/r1/dados" "-F" "-p" "5432"
