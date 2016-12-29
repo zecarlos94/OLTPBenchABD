@@ -1,0 +1,10 @@
+Transaction Type Index,Transaction Name,Start Time (microseconds),Latency (microseconds),Worker Id (start number),Phase Id (index in config file)
+7,UpdateItemTitle,1483043772.176207,851279,1,0
+5,GetItemReviewsByTrustedUser,1483043772.176470,852171,1,0
+2,GetReviewsByUser,1483043772.176477,852674,1,0
+1,GetReviewItemById,1483043772.176481,853291,1,0
+4,GetItemAverageRating,1483043772.176485,854399,1,0
+4,GetItemAverageRating,1483043772.176489,854805,1,0
+2,GetReviewsByUser,1483043772.176493,855107,1,0
+1,GetReviewItemById,1483043772.176498,855369,1,0
+7,UpdateItemTitle,1483043772.176513,1694444,1,0

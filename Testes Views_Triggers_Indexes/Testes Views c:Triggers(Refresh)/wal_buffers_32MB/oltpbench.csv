@@ -1,0 +1,5 @@
+Transaction Type Index,Transaction Name,Start Time (microseconds),Latency (microseconds),Worker Id (start number),Phase Id (index in config file)
+3,GetAverageRatingByTrustedUser,1483044398.416431,7493,1,0
+2,GetReviewsByUser,1483044398.416438,8575,1,0
+5,GetItemReviewsByTrustedUser,1483044398.416445,10723,1,0
+5,GetItemReviewsByTrustedUser,1483044398.416449,11838,1,0

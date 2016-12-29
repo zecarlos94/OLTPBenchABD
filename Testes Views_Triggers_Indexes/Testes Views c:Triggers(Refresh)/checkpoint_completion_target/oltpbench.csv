@@ -1,0 +1,2 @@
+Transaction Type Index,Transaction Name,Start Time (microseconds),Latency (microseconds),Worker Id (start number),Phase Id (index in config file)
+6,UpdateUserName,1483032187.539889,1003368,0,0
