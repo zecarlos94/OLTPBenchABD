@@ -1,0 +1,9 @@
+1483015602
+postgres
+9.5.5
+epinions
+[min=0.01089, 25th=1.00188, median=1.244367, avg=1.2354279589632828, 75th=1.451196, 90th=1.680194, 95th=1.720879, 99th=1.76958, max=1.898804]
+15.433184007503712
+isolation=TRANSACTION_SERIALIZABLE
+scalefactor=100
+terminals=4
